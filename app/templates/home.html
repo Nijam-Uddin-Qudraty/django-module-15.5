@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <div class="container m-auto">
+
+        <h1>DATA TABLE</h1>
+    {% if album %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Musician Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Album Rating</th>
+                <th scope="col">Instrument Type</th>
+                <th scope="col">Album Name</th>
+                <th scope="col">Release Date</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+      {% for data in album %}
+    <tr>
+      <td>{{data.musician.id}}</td>
+      <td>{{ data.musician.first_name }} {{ data.musician.last_name }}</td>
+      <td>{{data.musician.email}}</td>
+      <td>{{data.rating}}</td>
+      <td>{{data.musician.instrument_type}}</td>
+      <td>{{data.album_name}}</td>
+      <td>{{data.release_date}}</td>
+      <td>
+        <a class="btn btn-primary" href="{% url "edit" data.id %}">Edit</a>
+        <a class="btn btn-danger" href="{% url "delete" data.id %}">Delete</a>
+    </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+    {% else  %}
+    <h5 class="text-danger">NO DATA FOUND</h5>
+    <h5 class="text-warning">Make sure that you have added both Musician and Author to get result</h5>
+    {% endif %}
+    </div>
+{% endblock body %}
