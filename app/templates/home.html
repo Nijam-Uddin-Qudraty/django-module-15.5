@@ -23,14 +23,17 @@
     <tr>
       <td>{{data.musician.id}}</td>
       <td>{{ data.musician.first_name }} {{ data.musician.last_name }}</td>
-      <td>{{data.musician.email}}</td>
+
+      <td>{{data.musician.user.email}}</td>
       <td>{{data.rating}}</td>
       <td>{{data.musician.instrument_type}}</td>
       <td>{{data.album_name}}</td>
       <td>{{data.release_date}}</td>
+      {% if user.is_authenticated %}
       <td>
-        <a class="btn btn-primary" href="{% url "edit" data.id %}">Edit</a>
-        <a class="btn btn-danger" href="{% url "delete" data.id %}">Delete</a>
+      <a class="btn btn-primary" href="{% url "edit" data.id %}">Edit</a>
+      <a class="btn btn-danger" href="{% url "delete" data.id %}">Delete</a>
+      {% endif %}
     </td>
     </tr>
     {% endfor %}

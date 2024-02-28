@@ -2,9 +2,9 @@ from django.db import models
 from datetime import date
 # Create your models here.
 class Musician(models.Model):
-    first_name = models.CharField( max_length=50)
-    last_name = models.CharField( max_length=50)
-    email= models.EmailField( max_length=254)
+    first_name = models.CharField(blank=True,null=True, max_length=50)
+    last_name = models.CharField( blank=True,null=True,max_length=50)
+    email= models.EmailField(blank=True,null=True, max_length=254)
     phone_number = models.IntegerField()
     instrument_type = models.CharField(max_length=50)
     def __str__(self) -> str:
